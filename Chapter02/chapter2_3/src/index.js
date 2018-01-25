@@ -1,13 +1,16 @@
 import { createPost, editPost, setFilter } from './actions'
-import { postReducer } from './reducers'
+import appReducer from './reducers'
 
 const initialState = []
 
-const action = createPost('Dan', 'New Post')
-const newState = postReducer(initialState, action)
+let state = appReducer(undefined, { type: 'INIT_ACTION' })
+console.log('Initial State ', state)
 
-const action2 = createPost('Jane', 'Super New Post')
+state = appReducer(state, createPost('Dan', 'New Post'))
+console.log('State after createPost ', state)
 
-const newState2 = postReducer(newState, action2)
+state = appReducer(state, editPost(0, 'Edited Post'))
+console.log('State after editPost ', state)
 
-console.log(newState2)
+state = appReducer(state, setFilter('none'))
+console.log('State after setFilter ', state)

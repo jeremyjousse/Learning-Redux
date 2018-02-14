@@ -2,11 +2,13 @@ import React from 'react'
 import PostList from '../components/PostList.jsx'
 import { connect } from 'react-redux'
 
-const mapStateToProps = (state, props) => {
-  return { posts: state.posts }
+const getSelectedPosts = ({ selectedPosts, posts }) => {
+  return selectedPosts.map(id => posts[id])
 }
 
-// const mapDispatchToProps = ()
+const mapStateToProps = (state, props) => {
+  return { posts: getSelectedPosts(state) }
+}
 
 const ConnectedPostList = connect(mapStateToProps)(PostList)
 

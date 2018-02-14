@@ -6,8 +6,6 @@ const mapStateToProps = (state, props) => {
   return { posts: state.posts }
 }
 
-// const mapDispatchToProps = ()
-
 const ConnectedPostList = connect(mapStateToProps)(PostList)
 
 export default ConnectedPostList

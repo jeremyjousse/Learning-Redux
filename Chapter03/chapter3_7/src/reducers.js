@@ -5,12 +5,6 @@ import { CREATE_POST, EDIT_POST, SET_FILTER } from './actionTypes'
 export function postReducer(state = [], action) {
   switch (action.type) {
     case CREATE_POST: {
-      //  const { type, user = "Johny" } = action;
-
-      // rename property
-      //const { type: actionType } = action;
-
-      // collect other properties in another object
       const { type, ...post } = action
       return [...state, post]
     }
@@ -34,8 +28,13 @@ export function filterReducer(state = 'all', action) {
   }
 }
 
+export function selectedPostsReducer(state = [0], action) {
+  return state
+}
+
 const appReducer = combineReducers({
   posts: postReducer,
+  selectedPosts: selectedPostsReducer,
   filter: filterReducer
 })
 
